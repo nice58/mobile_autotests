@@ -6,7 +6,7 @@ import org.aeonbits.owner.Config;
         "classpath:user.properties"
 })
 public interface UserConfig extends Config {
-    @Key("username")
+    @Key("userName")
     String getUserName();
 
     @Key("userPassword")
