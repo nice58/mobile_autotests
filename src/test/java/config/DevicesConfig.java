@@ -3,10 +3,10 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:android.properties"
+        "classpath:${env}.properties"
 })
 
-public interface AndroidConfig extends Config {
+public interface DevicesConfig extends Config {
     @Key("appUrl")
     String getAppUrl();
 

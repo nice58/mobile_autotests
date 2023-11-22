@@ -1,19 +1,13 @@
 plugins {
     id 'java-library'
-    id "io.qameta.allure" version "2.9.6"
+    id "io.qameta.allure" version "2.11.2"
 }
 
 repositories {
     mavenCentral()
 }
 
-def allureVersion = "2.17.3",
-    selenideVersion = "6.5.2",
-    appiumVersion = "8.0.0",
-//    appiumVersion = "7.6.0",
-    restAssured = "4.5.1",
-    junitVersion = "5.8.2",
-    slf4jVersion = "1.7.32"
+def allureVersion = "2.17.3"
 
 allure {
     report {
@@ -31,13 +25,14 @@ allure {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:$selenideVersion",
-            "io.qameta.allure:allure-selenide:$allureVersion",
-            "io.appium:java-client:$appiumVersion",
-            "io.rest-assured:rest-assured:$restAssured",
-            "org.junit.jupiter:junit-jupiter:$junitVersion",
-            "org.slf4j:slf4j-simple:$slf4jVersion",
-            'org.aeonbits.owner:owner:1.0.12'
+            'com.codeborne:selenide:6.12.3',
+            'io.qameta.allure:allure-selenide:2.21.0',
+            'io.appium:java-client:8.3.0',
+            'io.rest-assured:rest-assured:5.3.0',
+            'org.junit.jupiter:junit-jupiter:5.9.2',
+            'org.slf4j:slf4j-simple:2.0.5',
+            'org.aeonbits.owner:owner:1.0.12',
+            "org.assertj:assertj-core:3.24.2"
     )
 }
 
@@ -57,8 +52,14 @@ tasks.withType(Test) {
     }
 }
 
-task android(type: Test) {
+task android_test (type: Test) {
     useJUnitPlatform {
-        includeTags 'android'
+        includeTags("android")
+    }
+}
+
+task ios_test (type: Test) {
+    useJUnitPlatform {
+        includeTags("ios")
     }
 }
